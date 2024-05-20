@@ -7,7 +7,7 @@
 
 - **Team Members:**
   
- |   Name |   Stdent ID    |  Specialization  |
+ |   Name |   Student ID    |  Specialization  |
  |---|---|---|
 | Ayoub Kchaou | 27894112 | Data Specialist |
 | Mark Kandaleft | Student ID |Training Specialist|
