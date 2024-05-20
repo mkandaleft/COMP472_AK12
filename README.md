@@ -10,7 +10,7 @@
  |   Name |   Student ID    |  Specialization  |
  |---|---|---|
 | Ayoub Kchaou | 27894112 | Data Specialist |
-| Mark Kandaleft | Student ID |Training Specialist|
+| Mark Kandaleft | 40126013 |Training Specialist|
 | Valentyna Tsilinchuk| Student Id | Evaluation Specialist |
 
 
