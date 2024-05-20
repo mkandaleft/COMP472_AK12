@@ -3,12 +3,15 @@
 
 ## Group Information
 - **Team Name:** AK12
+
+
 - **Team Members:**
-|   Name |   Stdent ID    |  Specialization  |
-|---|---|---|
-|Ayoub Kchaou |27894112 | Data Specialist |
-|Mark Kandaleft |Student ID |Training Specialist|
-|Valentyna Tsilinchuk| Student Id | Evaluation Specialist |
+  
+ |   Name |   Stdent ID    |  Specialization  |
+ |---|---|---|
+| Ayoub Kchaou | 27894112 | Data Specialist |
+| Mark Kandaleft | Student ID |Training Specialist|
+| Valentyna Tsilinchuk| Student Id | Evaluation Specialist |
 
 
 ## Project Overview
