@@ -11,7 +11,7 @@
  |---|---|---|
 | Ayoub Kchaou | 27894112 | Data Specialist |
 | Mark Kandaleft | 40126013 |Training Specialist|
-| Valentyna Tsilinchuk| Student Id | Evaluation Specialist |
+| Valentyna Tsilinchuk| 40046092 | Evaluation Specialist |
 
 
 ## Project Overview
