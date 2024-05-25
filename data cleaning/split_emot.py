@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # Load the CSV file
 df = pd.read_csv('../data/fer2013.csv')
 
-# Extract pixel values and convert them to numpy arrays
+# Extracting pixel values and converting them to numpy arrays
 df['pixels'] = df['pixels'].apply(lambda x: np.fromstring(x, dtype=int, sep=' '))
 
 # Function to plot images for each emotion
@@ -24,7 +24,7 @@ def plot_emotion_images(df, emotion_label, num_images=9):
     plt.tight_layout()
     plt.show()
 
-# List of emotions (you can adjust this list according to your dataset)
+# List of emotions
 emotions = df['emotion'].unique()
 
 # Plot images for each emotion
