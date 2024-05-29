@@ -4,10 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-# Define the path to the parent directory containing the folders
+# path to the parent directory containing the folders
 parent_dir = './classes'
 
-# Define the folder names (these should correspond to your class labels)
+# Define the folder names 
 class_folders = ['0', '1', '2', '3']
 
 # Number of sample images to display for each class
