@@ -73,7 +73,7 @@ train_set, valid_set, test_set = torch.utils.data.random_split(dataset, [train_s
 
 # Create data loaders
 train_loader = DataLoader(train_set, batch_size=32, shuffle=True)
-valid_loader = DataLoader(valid_set, batch_size=32, shuffle=False)
+valid_loader = DataLoader(valid_set, batch_size=32, shuffle=False) # batch_size=64 is also good
 test_loader = DataLoader(test_set, batch_size=32, shuffle=False)
 
 # Initialize the CNN model
@@ -81,10 +81,10 @@ model = SimpleCNN(num_classes=4).to(device)
 
 # Define the loss function and optimizer
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+optimizer = optim.Adam(model.parameters(), lr=0.001) #lr=0.00019516502701463062 was found optimal
 
 # Training loop
-for epoch in range(20):
+for epoch in range(20): # Could be increased to 50 or more
     # Train the model
     model.train()
     for images, labels in train_loader:
@@ -123,9 +123,8 @@ for epoch in range(20):
     print(f"Epoch {epoch+1}: Train Loss = {loss.item():.4f}, Valid Accuracy = {valid_accuracy:.4f}, Valid F1 Score = {valid_f1:.4f}")
 
 # Test the model and report the classification metrics
-
 def report_metrics(loader, model, device, title, class_labels):
-    model.eval()  # Set the model to evaluation mode
+    model.eval()
     y_true = []
     y_pred = []
 
@@ -148,11 +147,9 @@ def report_metrics(loader, model, device, title, class_labels):
     plt.ylabel("True Label")
     plt.show()
 
-# Example class labels
+# Report the classification metrics for the training, validation, and testing sets
 class_labels = ["angry", "focused", "happy", "neutral"]
 
-
-# Assuming training has completed and you have train_loader and valid_loader set up
 report_metrics(train_loader, model, device, "Training Set", class_labels)
 report_metrics(valid_loader, model, device, "Validation Set", class_labels)
 report_metrics(test_loader, model, device, "Testing Set", class_labels)
