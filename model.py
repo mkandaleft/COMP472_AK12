@@ -63,11 +63,17 @@ transform = transforms.Compose([
 # Load the dataset
 dataset = ImageFolder("./comp472", transform=transform)
 
-train_size = int(0.8 * len(dataset))
-test_size = len(dataset) - train_size
-train_set, test_set = torch.utils.data.random_split(dataset, [train_size, test_size])
+# Adjust proportions for training, validation, and testing
+train_size = int(0.7 * len(dataset))
+valid_size = int(0.15 * len(dataset))
+test_size = len(dataset) - train_size - valid_size
 
+# Split the dataset
+train_set, valid_set, test_set = torch.utils.data.random_split(dataset, [train_size, valid_size, test_size])
+
+# Create data loaders
 train_loader = DataLoader(train_set, batch_size=32, shuffle=True)
+valid_loader = DataLoader(valid_set, batch_size=32, shuffle=False)
 test_loader = DataLoader(test_set, batch_size=32, shuffle=False)
 
 # Initialize the CNN model
@@ -79,6 +85,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Training loop
 for epoch in range(20):
+    # Train the model
     model.train()
     for images, labels in train_loader:
         images = images.to(device)
@@ -90,78 +97,63 @@ for epoch in range(20):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        
-    # Evaluation on test set
+
+    # Validate the model
     model.eval()
+    valid_losses = []
+    valid_predictions = []
+    valid_labels = []
+
     with torch.no_grad():
-        all_predictions = []
-        all_labels = []
-        for images, labels in test_loader:
+        for images, labels in valid_loader:
             images = images.to(device)
             labels = labels.to(device)
-            
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
+            loss = criterion(outputs, labels)
             
-            all_predictions.extend(predicted.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
-        
-        # Calculate accuracy and F1 score
-        accuracy = accuracy_score(all_labels, all_predictions)
-        f1 = f1_score(all_labels, all_predictions, average='weighted')
-        
-        print(f"Epoch {epoch+1}: Accuracy = {accuracy:.4f}, F1 Score = {f1:.4f}")
+            valid_losses.append(loss.item())
+            valid_predictions.extend(predicted.cpu().numpy())
+            valid_labels.extend(labels.cpu().numpy())
+    
+    # Calculate the validation accuracy and F1 score
+    valid_accuracy = accuracy_score(valid_labels, valid_predictions)
+    valid_f1 = f1_score(valid_labels, valid_predictions, average='weighted')
 
-model.eval()
+    print(f"Epoch {epoch+1}: Train Loss = {loss.item():.4f}, Valid Accuracy = {valid_accuracy:.4f}, Valid F1 Score = {valid_f1:.4f}")
 
-# Test and report on the training data.
-y_train_true = []
-y_train_pred = []
+# Test the model and report the classification metrics
 
-for data in train_loader:
-  train_inputs, train_labels = data
-  train_inputs, train_labels = train_inputs.to(device), train_labels.to(device)
-  y_train_true.extend(train_labels.tolist())
+def report_metrics(loader, model, device, title, class_labels):
+    model.eval()  # Set the model to evaluation mode
+    y_true = []
+    y_pred = []
 
-  output = torch.softmax(model(train_inputs), dim=1)
-  y_train_pred.extend(output.argmax(dim=1).cpu().numpy().tolist())
+    with torch.no_grad():
+        for inputs, labels in loader:
+            inputs, labels = inputs.to(device), labels.to(device)
+            y_true.extend(labels.tolist())
 
-class_report_train = sklearn.metrics.classification_report(y_train_true, y_train_pred)
-print("Classification report for the training set:")
-print(class_report_train)
+            outputs = torch.softmax(model(inputs), dim=1)
+            y_pred.extend(outputs.argmax(dim=1).cpu().numpy().tolist())
 
-# Display the confusion matrix
+    class_report = sklearn.metrics.classification_report(y_true, y_pred)
+    print(f"Classification report for the {title}:")
+    print(class_report)
+
+    cm = sklearn.metrics.confusion_matrix(y_true, y_pred)
+    sns.heatmap(cm, annot=True, fmt="d", xticklabels=class_labels, yticklabels=class_labels)
+    plt.title(f"Confusion Matrix for the {title}")
+    plt.xlabel("Predicted Label")
+    plt.ylabel("True Label")
+    plt.show()
+
+# Example class labels
 class_labels = ["angry", "focused", "happy", "neutral"]
-cm_train = sklearn.metrics.confusion_matrix(y_train_true, y_train_pred)
-
-sns.heatmap(cm_train, annot=True, fmt="d", xticklabels=class_labels, yticklabels=class_labels)
-plt.title("Confusion Matrix for the Training Set")
-plt.xlabel("Predicted Label")
-plt.ylabel("True Label")
-plt.show()
 
 
-# Test and report on the testing data.
-y_test_true = []
-y_test_pred = []
+# Assuming training has completed and you have train_loader and valid_loader set up
+report_metrics(train_loader, model, device, "Training Set", class_labels)
+report_metrics(valid_loader, model, device, "Validation Set", class_labels)
+report_metrics(test_loader, model, device, "Testing Set", class_labels)
 
-for data in test_loader:
-  test_inputs, test_labels = data
-  test_inputs, test_labels = test_inputs.to(device), test_labels.to(device)
-  y_test_true.extend(test_labels.tolist())
-
-  output = torch.softmax(model(test_inputs), dim=1)
-  y_test_pred.extend(output.argmax(dim=1).cpu().numpy().tolist())
-
-class_report_test = sklearn.metrics.classification_report(y_test_true, y_test_pred)
-print("\nClassification report for the testing set:")
-print(class_report_test)
-
-# Display the confusion matrix
-cm_test = sklearn.metrics.confusion_matrix(y_test_true, y_test_pred)
-
-sns.heatmap(cm_test, annot=True, fmt="d", xticklabels=class_labels, yticklabels=class_labels)
-plt.title("Confusion Matrix for the Testing Set")
-plt.xlabel("Predicted Label")
-plt.ylabel("True Label")
-plt.show()
