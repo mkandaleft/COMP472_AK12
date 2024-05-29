@@ -18,7 +18,13 @@ for class_folder in class_folders:
 
 # Plot the class distribution on a histogram
 plt.figure(figsize=(10, 6))
-plt.bar(class_counts.keys(), class_counts.values(), color='skyblue')
+plt.bar(class_counts.keys(), class_counts.values(), color='skyblue', width=0.5)
+
+# Display the class sum on bars
+for bar in bars:
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width() / 2.0, height, f'{int(height)}', ha='center', va='bottom')
+
 plt.xlabel('Class')
 plt.ylabel('Number of Images')
 plt.title('Class Distribution of Images')
