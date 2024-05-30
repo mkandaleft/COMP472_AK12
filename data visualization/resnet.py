@@ -30,7 +30,7 @@ transform = transforms.Compose([
 ])
 
 # Load the dataset
-dataset = ImageFolder("./new/6", transform=transform)
+dataset = ImageFolder("../data/classes/2", transform=transform)
 
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size

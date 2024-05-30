@@ -4,7 +4,7 @@ import csv
 import os
 
 # Load data from CSV
-with open('fer2013.csv') as file:
+with open('../data/FER_dataset/fer2013.csv') as file:
     images_data = list(csv.reader(file))[1:]
 
 image_height, image_width = 48, 48

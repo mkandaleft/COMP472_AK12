@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the CSV file
-df = pd.read_csv('../data/fer2013.csv')
+df = pd.read_csv('../data/FER_dataset/fer2013.csv')
 
 # Extracting pixel values and converting them to numpy arrays
 df['pixels'] = df['pixels'].apply(lambda x: np.fromstring(x, dtype=int, sep=' '))

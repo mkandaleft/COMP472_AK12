@@ -4,7 +4,7 @@ import os
 from PIL import Image
 
 # Load the CSV file
-df = pd.read_csv('../data/angry_happy_neutral.csv')
+df = pd.read_csv('../data/extracted dataset/angry_happy_neutral.csv')
 
 # Extract pixel values and convert them to numpy arrays
 df['pixels'] = df['pixels'].apply(lambda x: np.fromstring(x, dtype=int, sep=' '))
