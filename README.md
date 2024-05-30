@@ -22,3 +22,11 @@ The project is divided into three parts:
 1. **Data Collection, Cleaning, Labeling & Preliminary Analysis**
 2. **CNN Model Development and Basic Evaluation**
 3. **Bias Analysis, Model Refinement & Deep Evaluation**
+
+
+---
+
+## Part 1: Data Collection, Cleaning, Labeling & Preliminary Analysis
+
+
+
