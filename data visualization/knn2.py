@@ -17,7 +17,7 @@ def load_images(directory):
             filenames.append(filename)
     return np.array(images), filenames
 
-directory = './new/6'
+directory = '../data/classes/2'
 images, filenames = load_images(directory)
 
 n_clusters = 2

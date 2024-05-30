@@ -2,7 +2,7 @@ import os
 import matplotlib.pyplot as plt
 
 
-parent_dir = './classes'
+parent_dir = '../data/classes'
 
 
 class_folders = ['0', '1', '2', '3']

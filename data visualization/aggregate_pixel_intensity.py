@@ -12,7 +12,7 @@ def get_histogram(img):
 
 
 # Path to directories
-data_folders = ['./data/0', './data/1', './data/2', './data/3']
+data_folders = ['../data/classes/0', '../data/classes/1', '../data/classes/2', '../data/classes/3']
 class_names = ['Angry', 'Happy', 'Neutral', 'Focused']
 
 # Placeholder for aggregated pixels

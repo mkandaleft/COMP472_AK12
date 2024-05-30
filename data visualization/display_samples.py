@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 # path to the parent directory containing the folders
-parent_dir = './classes'
+parent_dir = '../data/classes'
 
 # Define the folder names 
 class_folders = ['0', '1', '2', '3']
