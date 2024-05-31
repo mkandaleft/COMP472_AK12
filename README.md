@@ -41,6 +41,8 @@ To successfully run the code, you will need the following libraries:
   pip install scikit-learn
   pip install scikit-image
   pip install opencv-python
+  pip install torchvision
+  pip install seaborn
   ```
 
 To read the images in the correct format, use LFS extension:
