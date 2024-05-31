@@ -60,7 +60,7 @@ To successfully run the code, you will need the following libraries:
   * **Description:** Implements histogram specification by getting a reference pixel intensity from specified class and interpolates with images in target directory
 * [resizer.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/resizer.py)
   * **Description:** Modifies resolution of all images in specified folder to 48 x 48 pixels
-  * [resizer_demo.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/resizer_demo.py) used to select a downscaling approach
+  * **Demo only:** [resizer_demo.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/resizer_demo.py) used to select a downscaling approach
 * [split_emot.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/split_emot.py)
 * [to_png.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/to_png.py)
   * **Description:** Changes extension of images in specified directory to png and removes the old format
@@ -70,7 +70,7 @@ To successfully run the code, you will need the following libraries:
 
 * [aggregate_pixel_intensity.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/aggregate_pixel_intensity.py)
   * **Description:** Calculates aggregate pixel intensities of outlined classes and displays a plot per class
-  * [cd_tester.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/cd_tester.py) displays cumulative pixel intensity of each class on the same plot. Implemented for an alternative way to compare aggregate histograms
+  * **Demo only:** [cd_tester.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/cd_tester.py) displays cumulative pixel intensity of each class on the same plot. Implemented for an alternative way to compare aggregate histograms
 * [class_distribution.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/class_distribution.py)
 * [display_samples.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/display_samples.py)
 * [knn2.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/knn2.py)
