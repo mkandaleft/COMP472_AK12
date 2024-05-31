@@ -9,7 +9,7 @@ plt.rcParams['figure.figsize'] = (15, 10)
 cnn = CNN()
 
 # Define path to img
-img_path = './0 filtered'
+img_path = '../data/classes/0'
 
 # Generate encodings using Global Average Pooling
 encodings = cnn.encode_images(image_dir=img_path)
