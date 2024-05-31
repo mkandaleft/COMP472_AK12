@@ -42,9 +42,7 @@ To successfully run the code, you will need the following libraries:
   pip install scikit-image
   pip install opencv-python
   ```
-### Available Programs
-
-#### Data cleaning
+### Data Cleaning Programs
 
 * [converter.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/converter.py)
   * **Description:** Program gets speciified pixel lists from a FER-2013 CSV and converts them to images, sorting directly into "angry", "neutral", and "happy" classes
@@ -58,4 +56,15 @@ To successfully run the code, you will need the following libraries:
 * [to_png.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/to_png.py)
   * **Description:** Changes extension of images in specified directory to png and removes the old format
 * [transform.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/transform.py)
+
+### Data Visualization Programs
+
+* [aggregate_pixel_intensity.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/aggregate_pixel_intensity.py)
+  * [cd_tester.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/cd_tester.py)
+* [class_distribution.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/class_distribution.py)
+* [display_samples.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/display_samples.py)
+* [knn2.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/knn2.py)
+* [resnet.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/resnet.py)
+
+### Execution Instructions
 
