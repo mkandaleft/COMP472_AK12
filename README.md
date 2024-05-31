@@ -50,7 +50,8 @@ To successfully run the code, you will need the following libraries:
   ```
 ### Data Cleaning Programs
 
-> ⚠️ **Warning:** *Certain programs below permanenty alter directories by deleting files. Make sure folder paths are specified correctly before running.*
+> ⚠️ **Warning:** *Certain programs below permanenty alter directories by deleting files.
+> Make sure folder paths are specified correctly before running.*
 
 * [converter.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/converter.py)
   * **Description:** Program gets speciified pixel lists from a FER-2013 CSV and converts them to images, sorting directly into "angry", "neutral", and "happy" classes
