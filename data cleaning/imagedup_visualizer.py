@@ -3,42 +3,49 @@ from imagededup.utils import plot_duplicates
 import matplotlib.pyplot as plt
 import os
 
-plt.rcParams['figure.figsize'] = (15, 10)
+def find_duplicates_in(directory, threshold=0.97):
+    # Initialize the CNN method
+    cnn = CNN()
+    # Generate encodings for all images in the directory
+    encodings = cnn.encode_images(image_dir=directory)
+    # Find duplicate keys using adjusted minimum threshold
+    duplicates = cnn.find_duplicates(encoding_map=encodings, scores=True)
 
-# Initialize pretrained MobileNet
-cnn = CNN()
+    # Filter duplicates based on the threshold
+    filtered_duplicates = {}
+    for key, value in duplicates.items():
+        filtered_value = [dup for dup in value if dup[1] >= threshold]
+        if filtered_value:
+            filtered_duplicates[key] = filtered_value
 
-# Define path to img
-img_path = '../data/classes/0'
+    return filtered_duplicates
 
-# Generate encodings using Global Average Pooling
-encodings = cnn.encode_images(image_dir=img_path)
-
-# Identify img that have duplicates
-duplicates = cnn.find_duplicates(encoding_map=encodings, scores=True)
-
-threshold = 0.97
-
-# Filter duplicates based on the threshold
-filtered_duplicates = {}
-for key, value in duplicates.items():
-    filtered_value = [dup for dup in value if dup[1] >= threshold]
-    if filtered_value:
-        filtered_duplicates[key] = filtered_value
-
-print(len(filtered_duplicates))
-
-# Iterate through the duplicates dictionary
-for key, value in filtered_duplicates.items():
-    if len(value) > 0:
-        # Delete duplicate values
-        for duplicate_tuple in value:
-            duplicate = duplicate_tuple[0]  # Extract filename, need string
-            duplicate_path = os.path.join(img_path, duplicate)
+# Function deletes images that correspond to dup keys
+def delete_duplicates(duplicate_dict, directory):
+    for key, values in duplicate_dict.items():
+        for duplicate_tuple in values:
+            duplicate = duplicate_tuple[0]  # Extract filename
+            duplicate_path = os.path.join(directory, duplicate)
             if os.path.exists(duplicate_path):
                 os.remove(duplicate_path)
 
-# To visualize an arbitrary image and its duplicates
-# plot_duplicates(image_dir=img_path,
-#                 duplicate_map=duplicates,
-#                 filename='1001.png')
+# Define path to the images
+path = "../data/classes/0"
+
+# Find duplicates
+locate_dup = find_duplicates_in(path)
+
+if not locate_dup:
+    print('No duplicates detected in the folder.')
+else:
+    # Visualize duplicates before deletion
+    plt.rcParams['figure.figsize'] = (15, 10)
+    for key in locate_dup.keys():
+        plot_duplicates(image_dir=path,
+                        duplicate_map=locate_dup,
+                        filename=key)
+
+    # Delete duplicates
+    delete_duplicates(locate_dup, path)
+    print(f'{len(locate_dup)} duplicates detected and deleted.')
+
