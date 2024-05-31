@@ -28,5 +28,18 @@ The project is divided into three parts:
 
 ## Part 1: Data Collection, Cleaning, Labeling & Preliminary Analysis
 
+### Prerequisites
 
+To successfully run the code, you will need the following libraries:
+
+* pip
+  ```sh
+  pip install numpy
+  pip install matplotlib
+  pip install pillow
+  pip install imagededup
+  pip install scikit-learn
+  pip install scikit-image
+  pip install opencv-python
+  ```
 
