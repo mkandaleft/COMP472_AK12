@@ -82,7 +82,7 @@ and converts them to images under a created new directory 'emotion_images' havin
 * [knn2.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/knn2.py)
    * **Description:**  this program is clustering images into different directories based on their pixel values and visualizing the clusters using PCA and t-SNE.
 * [resnet.py](https://github.com/mkandaleft/COMP472_AK12/blob/06ce0e2326ea255625329833b2af5f7e7d0b8e47/data%20visualization/resnet.py)
-  * **Description:** This script trains a ResNet-18 model on an image dataset using PyTorch. It loads images from a specified directory, applies transformations, and splits the data into training and testing sets. The model is fine-tuned to classify images into two categories. It uses cross-entropy loss and the Adam optimizer for training. After each epoch, the model's performance is evaluated using accuracy and F1 score metrics.
+  * **Description:** This script trains a ResNet-18 model on the image dataset using PyTorch. It loads images from a class directory, applies transformations, and splits the data into training and testing sets. The model is fine-tuned to classify images into two categories. It uses cross-entropy loss and the Adam optimizer for training. After each epoch, the model's performance is evaluated using accuracy and F1 score metrics.
 
 ### Execution Instructions
 
