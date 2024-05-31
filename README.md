@@ -43,6 +43,8 @@ To successfully run the code, you will need the following libraries:
   pip install opencv-python
   ```
 
+To read the images in the correct format, use LFS extension:
+
 * git
   ```sh
   git lfs install
