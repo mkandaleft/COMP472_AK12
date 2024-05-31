@@ -54,6 +54,7 @@ To read the images in the correct format, use LFS extension:
   ```
 ### Data
  * [FER Dataset](https://github.com/mkandaleft/COMP472_AK12/blob/main/data/FER_dataset/fer2013.csv) : the original dataset from kaggle containing 7 classes of emotions
+   * Additonal datasets used for focused/engaged class include [Emotic](https://s3.sunai.uoc.edu/emotic/index.html) and [FANE neutral & surprised](https://www.kaggle.com/datasets/furcifer/fane-facial-expressions-and-emotion-dataset) images that were identified to fit the emotion category.
  * [angry_happy_neutral_dataset](https://github.com/mkandaleft/COMP472_AK12/blob/main/data/extracted%20dataset/angry_happy_neutral.csv) : the extracted csv with only the emotions needed : angry,happy and neutral.
  * [angry (0)](https://github.com/mkandaleft/COMP472_AK12/tree/main/data/classes/0) : angry class final data.
  * [happy (1)](https://github.com/mkandaleft/COMP472_AK12/tree/main/data/classes/1) : happy class final data.
