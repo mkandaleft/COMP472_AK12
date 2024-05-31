@@ -78,3 +78,9 @@ To successfully run the code, you will need the following libraries:
 
 ### Execution Instructions
 
+The code can be executed in the PyCharm IDE:
+
+```sh
+PS C:\PATH_TO_PROJECT> python 'program_name.py'
+```
+
