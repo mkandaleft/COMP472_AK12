@@ -52,6 +52,13 @@ To read the images in the correct format, use LFS extension:
   git lfs install
   git lfs pull
   ```
+### Data
+ * [FER Dataset](https://github.com/mkandaleft/COMP472_AK12/blob/main/data/FER_dataset/fer2013.csv) : the original dataset from kaggle containing 7 classes of emotions
+ * [angry_happy_neutral_dataset](https://github.com/mkandaleft/COMP472_AK12/blob/main/data/extracted%20dataset/angry_happy_neutral.csv) : the extracted csv with only the emotions needed : angry,happy and neutral.
+ * [angry (0) final data](https://github.com/mkandaleft/COMP472_AK12/tree/main/data/classes/0) : angry class final data.
+ * [happy (1) final data](https://github.com/mkandaleft/COMP472_AK12/tree/main/data/classes/1) : happy class final data.
+ * [neutral (2) final data](https://github.com/mkandaleft/COMP472_AK12/tree/main/data/classes/2) : neutral class final data.
+ * [focused (3) final data](https://github.com/mkandaleft/COMP472_AK12/tree/main/data/classes/3) : focused class final data.
 ### Data Cleaning Programs
 
 > ⚠️ **Warning:** *Certain programs below permanenty alter directories by deleting files.
