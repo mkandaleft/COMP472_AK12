@@ -69,8 +69,6 @@ To read the images in the correct format, use LFS extension:
 * [transform.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/transform.py)
   * **Description:** This script will organize and save the images based on their emotion labels. The program gets specified pixel lists from [angry_happy_neutral.csv](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data/extracted%20dataset/angry_happy_neutral.csv)
 and converts them to images under a created new directory 'emotion_images' having 3 subdirectories '0' , '3' ,and '6' corresponding to 'angry' , 'happy' , 'neutral' .
-* [converter.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/converter.py)
-  * **Description:** Program gets specified pixel lists from a FER-2013 CSV and converts them to images, sorting directly into "angry", "neutral", and "happy" classes
 * [imagededup_visualizer.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/imagedup_visualizer.py)
   * **Description:** This script identifies and removes duplicate images in a specified directory using a CNN-based similarity detection method.
 * [light_processing.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/light_processing.py)
