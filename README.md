@@ -47,15 +47,15 @@ To successfully run the code, you will need the following libraries:
 #### Data cleaning
 
 * [converter.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/converter.py)
-  * Script is used to get the pixel list from a FER-2013 CSV and convert to images, sorting directly into "angry", "neutral", and "happy" classes
+  * **Description:** Program gets speciified pixel lists from a FER-2013 CSV and converts them to images, sorting directly into "angry", "neutral", and "happy" classes
 * [imagededup_visualizer.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/imagedup_visualizer.py)
 * [light_processing.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/light_processing.py)
-  * Implements histogram specification by getting a reference pixel intensity from specified class and interpolates with images in target directory
+  * **Description:** Implements histogram specification by getting a reference pixel intensity from specified class and interpolates with images in target directory
 * [resizer.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/resizer.py)
-  * Modifies resolution of all images in specified folder to 48 x 48 pixels
+  * **Description:** Modifies resolution of all images in specified folder to 48 x 48 pixels
   * [resizer_demo.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/resizer_demo.py) used to select a downscaling approach
 * [split_emot.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/split_emot.py)
 * [to_png.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/to_png.py)
-  * Changes extension of images in specified directory to png and removes the old format
+  * **Description:** Changes extension of images in specified directory to png and removes the old format
 * [transform.py](https://github.com/mkandaleft/COMP472_AK12/blob/278511d96c0fffa820d965cd1e7217938cdafdfc/data%20cleaning/transform.py)
 
