@@ -10,6 +10,8 @@ from mainModel import SimpleCNN
 from dataLoader import get_loaders
 import torch
 
+# this grid search is used to find the best hyperparameters for the model.
+
 data_path = "./../data/classes"
 
 # Load tensors
@@ -18,8 +20,6 @@ train_loader, valid_loader, test_loader = get_loaders(data_path)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model=SimpleCNN(num_classes=4).to(device)
-
-
 
 
 # Wrap the model in Skorch
@@ -33,16 +33,16 @@ net = NeuralNetClassifier(
     iterator_train__shuffle=True
 )
 
+# Define the hyperparameter grid to search
 param_grid = {
     'lr': [0.001, 0.0001],
     'batch_size': [32, 64, 100],
     'optimizer': [optim.Adam],
-    'module__num_classes': [4],  # Assuming you are working with a dataset with 10 classes
+    'module__num_classes': [4],
     'max_epochs': [17, 20]
 }
 
 
-# Convert datasets into a format suitable for scikit-learn
 # This function will iterate over the dataset and return the images and labels in numpy arrays
 def get_dataset(dataset):
     loader = DataLoader(dataset, batch_size=len(dataset), shuffle=False)
