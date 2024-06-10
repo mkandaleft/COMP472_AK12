@@ -1,10 +1,20 @@
 from faneModel import SimpleCNN
-from dataLoader import get_loaders
-from train import train_model
-from evaluate import report_metrics
+from faneDataLoader import get_loaders
+from faneTrain import train_model
 import torch
 
-data_path = "./fane_experimental_data"
+import sys
+import os
+
+# Append the directory path of the previous directory
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Now you can import the train module
+from evaluate import report_metrics
+
+
+
+data_path = "./data/fane_experiment_data"
 
 # Load tensors
 train_loader, valid_loader, test_loader = get_loaders(data_path)

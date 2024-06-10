@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score
-from mainModel import SimpleCNN
+from faneModel import SimpleCNN
 
 def train_model(model, train_loader, valid_loader, device):
     # Initialize the CNN model
