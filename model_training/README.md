@@ -11,6 +11,7 @@
       ---> train using training.py ---> evaluate model and training using saved weights
 
 ## Other:
+  - fane_experiment contains faneModel.py which is our experiment model.
   - model_weights.pth saves the weight after training.
   - gridSearch.py does a hyperparameter search to find best hyperparameters.
 
