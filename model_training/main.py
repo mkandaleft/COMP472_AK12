@@ -1,4 +1,5 @@
 from mainModel import SimpleCNN
+# from oldModel import SimpleCNN # Use this line if you want to use the old model
 from dataLoader import get_loaders
 from train import train_model
 from evaluate import report_metrics
