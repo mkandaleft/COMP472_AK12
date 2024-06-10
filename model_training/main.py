@@ -5,7 +5,7 @@ from train import train_model
 from evaluate import report_metrics
 import torch
 
-data_path = "./../data/classes"
+data_path = "./data/classes"
 
 # Load tensors
 train_loader, valid_loader, test_loader = get_loaders(data_path)

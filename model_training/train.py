@@ -4,15 +4,12 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score
-from mainModel import SimpleCNN
 
 def train_model(model, train_loader, valid_loader, device):
-    # Initialize the CNN model
-    model = SimpleCNN(num_classes=4).to(device)
 
     # Define the loss function and optimizer
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001) #lr=0.00019516502701463062 was found optimal
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # Early stopping parameters
     patience = 5
@@ -20,7 +17,7 @@ def train_model(model, train_loader, valid_loader, device):
     counter = 0
 
     # Training loop
-    for epoch in range(50): # Could be increased to 50 or more
+    for epoch in range(50):
         # Train the model
         model.train()
         for images, labels in train_loader:
