@@ -20,10 +20,10 @@ class SimpleCNN(nn.Module):
         self.relu4 = nn.ReLU()
         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
 
-        self.conv8 = nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1)
+        self.conv8 = nn.Conv2d(64, 128, kernel_size=5, stride=1, padding=2)
         self.bn8 = nn.BatchNorm2d(128)
         self.relu8 = nn.ReLU()
-        self.conv9 = nn.Conv2d(128, 128, kernel_size=3, stride=1, padding=1)
+        self.conv9 = nn.Conv2d(128, 128, kernel_size=5, stride=1, padding=2)
         self.bn9 = nn.BatchNorm2d(128)
         self.relu9 = nn.ReLU()
         self.pool3 = nn.MaxPool2d(kernel_size=2, stride=2)
