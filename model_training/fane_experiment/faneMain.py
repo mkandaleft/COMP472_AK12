@@ -8,11 +8,7 @@ import os
 
 # Append the directory path of the previous directory
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Now you can import the train module
 from evaluate import report_metrics
-
-
 
 data_path = "./data/fane_experiment_data"
 

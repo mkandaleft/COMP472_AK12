@@ -8,7 +8,7 @@ from torchvision.datasets import ImageFolder
 def get_loaders(data_path, batch_size=64):
     # Define the transforms for data preprocessing
     transform = transforms.Compose([
-        transforms.Resize((96, 96)),
+        transforms.Resize((96, 96)), # Uses 96x96 images instead of 48x48 as our dataset
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.4926176471], std=[0.2526960784])
     ])
