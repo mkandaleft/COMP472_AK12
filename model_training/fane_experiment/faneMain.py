@@ -10,7 +10,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from evaluate import report_metrics
 
-data_path = "./data/fane_experiment_data"
+data_path = "../../data/fane_experiment_data"
 
 # Load tensors
 train_loader, valid_loader, test_loader = get_loaders(data_path)
