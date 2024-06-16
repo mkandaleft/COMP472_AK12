@@ -3,7 +3,7 @@ import torch.nn as nn
 
 # Define the CNN model
 class SimpleCNN(nn.Module):
-    def __init__(self, num_classes=10):  # Defaulting num_classes to 10 for example
+    def __init__(self, num_classes=10):
         super(SimpleCNN, self).__init__()
         self.conv1 = nn.Conv2d(3, 16, kernel_size=5, stride=1, padding=2)
         self.bn1 = nn.BatchNorm2d(16)
