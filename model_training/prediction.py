@@ -1,5 +1,5 @@
 from PIL import Image
-from mainModel import SimpleCNN  # Make sure this path is correct
+from mainModel import SimpleCNN
 import torch
 import torchvision.transforms as transforms
 
