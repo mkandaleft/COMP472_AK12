@@ -17,7 +17,7 @@ transform = transforms.Compose([
 def predict_image(model, image_tensor, device, class_labels):
     image_tensor = image_tensor.to(device)
     model.to(device)
-    model.eval()  # Set the model to evaluation mode
+    model.eval()  # Set eval mode
     with torch.no_grad():
         output = model(image_tensor)
         probabilities = Funct.softmax(output, dim=1)
@@ -27,8 +27,10 @@ def predict_image(model, image_tensor, device, class_labels):
 
 # Function to load the image using transformation from dataLoader
 def load_image(image_path):
-    image = Image.open(image_path).convert('RGB')
+
+    image = Image.open(image_path).convert('RGB') # Match model 
     image = transform(image).unsqueeze(0)
+
     return image
 
 
@@ -52,7 +54,7 @@ def load_image(image_path):
 
 if __name__ == "__main__":
     model_path = 'best_model.pth'
-    image_path = '../data/testing/image0023281.jpg'
+    image_path = '../data/testing/ffhq_2044.png'
 
     # Device
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
