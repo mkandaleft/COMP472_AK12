@@ -21,7 +21,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class_labels = ["angry", "focused", "happy", "neutral"]
 
 # Load the model weights
-model.load_state_dict(torch.load('model_weights_best.pth'))
+model.load_state_dict(torch.load('best_model.pth'))
 
 # Report the classification metrics for the training, validation, and testing sets
 report_metrics(train_loader, model, device, "Training Set", class_labels)
