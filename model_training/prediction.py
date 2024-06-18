@@ -66,7 +66,7 @@ if __name__ == "__main__":
     # Load transformed img
     image_tensor = load_image(image_path)
 
-    class_labels = ["angry", "focused", "happy", "neutral"]
+    class_labels = ["angry", "happy", "neutral" ,"focused"]
 
     # Make prediction on img
     predicted_class, confidence_score = predict_image(model, image_tensor, device, class_labels)
