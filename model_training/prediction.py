@@ -14,7 +14,7 @@ transform = transforms.Compose([
 def predict_image(model, image_tensor, device, class_labels):
     image_tensor = image_tensor.to(device)
     model.to(device)
-    model.eval()  # Set the model to evaluation mode
+    model.eval()  # Set eval mode
     with torch.no_grad():
         output = model(image_tensor)
         _, predicted = torch.max(output, 1)
@@ -23,8 +23,8 @@ def predict_image(model, image_tensor, device, class_labels):
 
 # Function to load the image using transformation from dataLoader
 def load_image(image_path):
-    image = Image.open(image_path).convert('RGB')  # Ensure correct image mode
-    image = transform(image).unsqueeze(0)  # Add batch dimension
+    image = Image.open(image_path).convert('RGB') # Match model 
+    image = transform(image).unsqueeze(0)  
     return image
 
 
