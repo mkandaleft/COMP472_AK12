@@ -21,8 +21,11 @@ def get_loaders(data_path, batch_size=64):
     valid_size = int(0.15 * len(dataset))
     test_size = len(dataset) - train_size - valid_size
 
+    # Create a generator with a fixed seed
+    generator = torch.Generator().manual_seed(10)
+
     # Split the dataset
-    train_set, valid_set, test_set = torch.utils.data.random_split(dataset, [train_size, valid_size, test_size])
+    train_set, valid_set, test_set = torch.utils.data.random_split(dataset, [train_size, valid_size, test_size], generator=generator)
 
     # Create data loaders
     train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
