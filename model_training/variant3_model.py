@@ -25,7 +25,7 @@ class SimpleCNN(nn.Module):
 
         self.flatten = nn.Flatten()
 
-        self.fc1 = nn.Linear(256 * 3 * 3, 128)  # Adjusting the input size based on the number of pool layers
+        self.fc1 = nn.Linear(256 * 3 * 3, 128)  # Adjusted for k
         self.bn5 = nn.BatchNorm1d(128)
         self.dropout2 = nn.Dropout(0.25)
 
