@@ -15,6 +15,7 @@ def train_and_validate_model(train_idx, dataset, device):
     train_loader = DataLoader(Subset(dataset, train_indices), batch_size=64, shuffle=True)
     val_loader = DataLoader(Subset(dataset, val_indices), batch_size=64, shuffle=False)
 
+    # Initialize and train the model
     model = SimpleCNN(num_classes=4).to(device)
     train_model(model, train_loader, val_loader, device)
     
@@ -24,7 +25,7 @@ def compute_metrics(loader, model, device):
     model.eval()
     y_true = []
     y_pred = []
-
+    # Compute predictions and store true and predicted labels
     with torch.no_grad():
         for inputs, labels in loader:
             inputs, labels = inputs.to(device), labels.to(device)
@@ -33,6 +34,7 @@ def compute_metrics(loader, model, device):
             y_true.extend(labels.cpu().numpy())
             y_pred.extend(predicted.cpu().numpy())
 
+    # Calculate and return metrics
     accuracy = accuracy_score(y_true, y_pred)
     precision = precision_score(y_true, y_pred, average='weighted')
     recall = recall_score(y_true, y_pred, average='weighted')
@@ -68,6 +70,7 @@ def k_fold_cross_validation(data_path, k=10):
         # Evaluate the model on the validation set
         accuracy, precision, recall, f1 = compute_metrics(val_loader, model, device)
         
+        # Store the results for each fold
         fold_results['accuracy'].append(accuracy)
         fold_results['precision'].append(precision)
         fold_results['recall'].append(recall)
@@ -76,6 +79,7 @@ def k_fold_cross_validation(data_path, k=10):
         # Print the results for each fold
         print(f"{fold + 1:<5} {accuracy:<10.4f} {precision:<10.4f} {recall:<10.4f} {f1:<10.4f}")
 
+    # Calculate and print the average metrics
     avg_accuracy = np.mean(fold_results['accuracy'])
     avg_precision = np.mean(fold_results['precision'])
     avg_recall = np.mean(fold_results['recall'])
