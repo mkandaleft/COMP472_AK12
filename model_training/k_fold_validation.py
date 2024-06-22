@@ -15,7 +15,6 @@ def train_and_validate_model(train_idx, dataset, device):
     train_loader = DataLoader(Subset(dataset, train_indices), batch_size=64, shuffle=True)
     val_loader = DataLoader(Subset(dataset, val_indices), batch_size=64, shuffle=False)
 
-    # Initialize and train the model
     model = SimpleCNN(num_classes=4).to(device)
     train_model(model, train_loader, val_loader, device)
     
@@ -25,22 +24,24 @@ def compute_metrics(loader, model, device):
     model.eval()
     y_true = []
     y_pred = []
-    # Compute predictions and store true and predicted labels
+
     with torch.no_grad():
         for inputs, labels in loader:
             inputs, labels = inputs.to(device), labels.to(device)
-            outputs = torch.softmax(model(inputs), dim=1)
+            outputs = model(inputs)
             _, predicted = torch.max(outputs, 1)
             y_true.extend(labels.cpu().numpy())
             y_pred.extend(predicted.cpu().numpy())
 
-    # Calculate and return metrics
     accuracy = accuracy_score(y_true, y_pred)
-    precision = precision_score(y_true, y_pred, average='weighted')
-    recall = recall_score(y_true, y_pred, average='weighted')
-    f1 = f1_score(y_true, y_pred, average='weighted')
+    macro_precision = precision_score(y_true, y_pred, average='macro')
+    macro_recall = recall_score(y_true, y_pred, average='macro')
+    macro_f1 = f1_score(y_true, y_pred, average='macro')
+    micro_precision = precision_score(y_true, y_pred, average='micro')
+    micro_recall = recall_score(y_true, y_pred, average='micro')
+    micro_f1 = f1_score(y_true, y_pred, average='micro')
 
-    return accuracy, precision, recall, f1
+    return accuracy, macro_precision, macro_recall, macro_f1, micro_precision, micro_recall, micro_f1
 
 def k_fold_cross_validation(data_path, k=10):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -54,39 +55,49 @@ def k_fold_cross_validation(data_path, k=10):
     
     fold_results = {
         'accuracy': [],
-        'precision': [],
-        'recall': [],
-        'f1_score': []
+        'macro_precision': [],
+        'macro_recall': [],
+        'macro_f1': [],
+        'micro_precision': [],
+        'micro_recall': [],
+        'micro_f1': []
     }
     
     # Print the header of the table
-    print(f"{'Fold':<5} {'Accuracy':<10} {'Precision':<10} {'Recall':<10} {'F1 Score':<10}")
+    print(f"{'Fold':<5} {'Accuracy':<10} {'Macro P':<10} {'Macro R':<10} {'Macro F':<10} {'Micro P':<10} {'Micro R':<10} {'Micro F':<10}")
     
     for fold, (train_idx, test_idx) in enumerate(kf.split(dataset)):
         print(f'Fold {fold + 1}/{k}')
         
         model, train_loader, val_loader = train_and_validate_model(train_idx, dataset, device)
         
-        # Evaluate the model on the validation set
-        accuracy, precision, recall, f1 = compute_metrics(val_loader, model, device)
+        # Load the best model state for evaluation
+        # model.load_state_dict(torch.load('best_model.pth'))
         
-        # Store the results for each fold
+        # Evaluate the model on the validation set
+        accuracy, macro_precision, macro_recall, macro_f1, micro_precision, micro_recall, micro_f1 = compute_metrics(val_loader, model, device)
+        
         fold_results['accuracy'].append(accuracy)
-        fold_results['precision'].append(precision)
-        fold_results['recall'].append(recall)
-        fold_results['f1_score'].append(f1)
+        fold_results['macro_precision'].append(macro_precision)
+        fold_results['macro_recall'].append(macro_recall)
+        fold_results['macro_f1'].append(macro_f1)
+        fold_results['micro_precision'].append(micro_precision)
+        fold_results['micro_recall'].append(micro_recall)
+        fold_results['micro_f1'].append(micro_f1)
         
         # Print the results for each fold
-        print(f"{fold + 1:<5} {accuracy:<10.4f} {precision:<10.4f} {recall:<10.4f} {f1:<10.4f}")
+        print(f"{fold + 1:<5} {accuracy:<10.4f} {macro_precision:<10.4f} {macro_recall:<10.4f} {macro_f1:<10.4f} {micro_precision:<10.4f} {micro_recall:<10.4f} {micro_f1:<10.4f}")
 
-    # Calculate and print the average metrics
     avg_accuracy = np.mean(fold_results['accuracy'])
-    avg_precision = np.mean(fold_results['precision'])
-    avg_recall = np.mean(fold_results['recall'])
-    avg_f1 = np.mean(fold_results['f1_score'])
+    avg_macro_precision = np.mean(fold_results['macro_precision'])
+    avg_macro_recall = np.mean(fold_results['macro_recall'])
+    avg_macro_f1 = np.mean(fold_results['macro_f1'])
+    avg_micro_precision = np.mean(fold_results['micro_precision'])
+    avg_micro_recall = np.mean(fold_results['micro_recall'])
+    avg_micro_f1 = np.mean(fold_results['micro_f1'])
     
     # Print the average metrics
-    print(f"{'Avg':<5} {avg_accuracy:<10.4f} {avg_precision:<10.4f} {avg_recall:<10.4f} {avg_f1:<10.4f}")
+    print(f"{'Avg':<5} {avg_accuracy:<10.4f} {avg_macro_precision:<10.4f} {avg_macro_recall:<10.4f} {avg_macro_f1:<10.4f} {avg_micro_precision:<10.4f} {avg_micro_recall:<10.4f} {avg_micro_f1:<10.4f}")
 
     return fold_results
 
