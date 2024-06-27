@@ -1,7 +1,7 @@
 # Directory Content:
 
 ## Components: 
-  - mainModel.py and oldModel.py which are the model architectures.
+  - mainModel.py, Variant 3 and oldModel.py which are the model architectures.
   - dataLoader.py loads data into tensors and splits for training, validating and testing
   - training.py contains the training loop
   - evaluate.py will report metrics and confusion Matrices for a given set
