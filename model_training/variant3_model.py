@@ -20,7 +20,7 @@ class SimpleCNN(nn.Module):
 
         self.flatten = nn.Flatten()
 
-        self.fc1 = nn.Linear(256 * 3 * 3, 128)  # Adjusted for k
+        self.fc1 = nn.Linear(256 * 12 * 12, 128)  # Adjusted for k
         self.bn5 = nn.BatchNorm1d(128)
         self.dropout2 = nn.Dropout(0.25)
         self.fc2 = nn.Linear(128, 64)
